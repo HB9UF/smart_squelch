@@ -4,39 +4,7 @@
 
 #include "io.h"
 #include "backlog.h"
-
-#define BUF_SIZE 1024
-#define BACKLOG_BUF_SIZE 12
-
-static adcsample_t sample_buffer[BUF_SIZE] = {0};
-volatile adcsample_t *first_sample, *last_sample;
-binary_semaphore_t wait_for_sample;
-
-static void adc_callback(ADCDriver *adcp, adcsample_t *buffer, size_t n)
-{
-    first_sample = buffer;
-    last_sample = buffer+n;
-    chBSemSignalI(&wait_for_sample);
-}
-
-const ADCConversionGroup adcgrpcfg = {
-    circular:     TRUE, 
-    num_channels: 1, 
-    end_cb:       adc_callback,
-    error_cb:     NULL,
-    cfgr1:        ADC_CFGR1_EXTEN_0 | ADC_CFGR1_RES_12BIT,
-    tr:           ADC_TR(0, 0),
-    smpr:         ADC_SMPR_SMP_7P5,
-    chselr:       ADC_CHSELR_CHSEL0
-};
-
-
-static const GPTConfig gptcfg = {
-    frequency:    1000000U,
-    callback:     NULL,
-    cr2:          TIM_CR2_MMS_1,  /* MMS = 010 = TRGO on Update Event.        */
-    dier:         0U
-};
+#include "adc_gpt.h"
 
 const uint32_t WEAK_THRESHOLD = 38000;
 const uint32_t STRONG_THRESHOLD = 7000;
@@ -47,20 +15,11 @@ int main(void)
     chSysInit();
     io_init();
 
-    palSetPadMode(GPIOA,  0, PAL_MODE_INPUT_ANALOG);
-    adcStart(&ADCD1, NULL);
-
     palSetPadMode(GPIOA,  9, PAL_MODE_ALTERNATE(1));
     palSetPadMode(GPIOA, 10, PAL_MODE_ALTERNATE(1));
     sdStart(&SD1, NULL);
 
-    chBSemObjectInit(&wait_for_sample, TRUE);
-
-    chThdSleepMilliseconds(1000);
-
-    adcStartConversion(&ADCD1, &adcgrpcfg, sample_buffer, BUF_SIZE);
-    gptStart(&GPTD1, &gptcfg);
-    gptStartContinuous(&GPTD1, 20);
+    adc_init();
 
     circular_buf_t backlog;
     circular_buf_init(&backlog);
