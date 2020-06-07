@@ -112,6 +112,7 @@ CSRC = $(STARTUPSRC) \
        io.c \
        backlog.c \
        adc_gpt.c \
+       uart.c \
        main.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
