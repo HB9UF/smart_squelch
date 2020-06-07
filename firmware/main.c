@@ -48,6 +48,7 @@ int main(void)
     circular_buf_init(&backlog);
 
     bool squelch_open = false;
+    bool squelch_armed = false;
     uint32_t mean = 0;
     uint8_t counter = 0;
     char squelch_flag = ' ';
@@ -71,6 +72,7 @@ int main(void)
             {
                 if(circular_buf_all_lower_than(&backlog, STRONG_THRESHOLD))
                 {
+                    // Immediately close squelch
                     io_close_squelch();
                     squelch_open = false;
                     squelch_flag = ' ';
@@ -82,17 +84,37 @@ int main(void)
                 }
                 else
                 {
+                    // Close squelch afer grace tail
                     io_close_squelch();
                     squelch_open = false;
                     squelch_flag = ' ';
                 }
             }
-            else if(!squelch_open && mean < WEAK_THRESHOLD)
+            else if(squelch_open && mean < WEAK_THRESHOLD)
             {
+                // Set correct flag (otherwise the flag remains '?')
+                squelch_flag = '*';
+            }
+            else if(!squelch_open && !squelch_armed && mean < WEAK_THRESHOLD)
+            {
+                // Arm squelch
+                squelch_armed = true;
+                squelch_flag = 'A';
+            }
+            else if(!squelch_open && squelch_armed && mean > WEAK_THRESHOLD)
+            {
+                // Disarm squelch
+                squelch_armed = false;
+                squelch_flag = ' ';
+            }
+            else if(!squelch_open && squelch_armed && mean < WEAK_THRESHOLD)
+            {
+                // Open squelch
                 io_open_squelch();
                 circular_buf_reset(&backlog, 0);
                 squelch_open = true;
                 opening_squelch = true;
+                squelch_armed = false;
                 squelch_flag = '*';
             }
             if(!opening_squelch)
