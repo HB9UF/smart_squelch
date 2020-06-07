@@ -21,6 +21,9 @@ fp-info-cache
 *.dsn
 *.ses
 
+# KiCad backup files
+/rescue-backup
+
 # Firmware binaries
 /firmware/.dep
 /firmware/build
