@@ -1,11 +1,11 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# squelch_board-rescue_APE8865U5-33-HF-3
+# APE8865U5-33-HF-3
 #
-DEF squelch_board-rescue_APE8865U5-33-HF-3 U 0 40 Y Y 1 F N
+DEF APE8865U5-33-HF-3 U 0 40 Y Y 1 F N
 F0 "U" -300 250 50 H V C CNN
-F1 "squelch_board-rescue_APE8865U5-33-HF-3" 0 200 50 H V C CNN
+F1 "APE8865U5-33-HF-3" 0 200 50 H V C CNN
 F2 "SC-70-5" 0 100 50 H I C CIN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -21,11 +21,11 @@ X VOUT 5 450 50 150 L 50 50 1 1 w
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_C
+# C
 #
-DEF squelch_board-rescue_C C 0 10 N Y 1 F N
+DEF C C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "squelch_board-rescue_C" 25 -100 50 H V L CNN
+F1 "C" 25 -100 50 H V L CNN
 F2 "" 38 -150 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -39,11 +39,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_CONN-10033526-N3212LF
+# CONN-10033526-N3212LF
 #
-DEF squelch_board-rescue_CONN-10033526-N3212LF J 0 40 Y Y 1 F N
+DEF CONN-10033526-N3212LF J 0 40 Y Y 1 F N
 F0 "J" 0 400 50 H V C CNN
-F1 "squelch_board-rescue_CONN-10033526-N3212LF" 0 300 50 H V C CNN
+F1 "CONN-10033526-N3212LF" 0 300 50 H V C CNN
 F2 "conn-fci:CONN-10033526-N3212LF" 0 500 50 H I C CNN
 F3 "http://portal.fciconnect.com/Comergent//fci/drawing/10033526.pdf" 0 -350 50 H I C CNN
 F4 "DIST DIGIKEY 609-4700-1-ND" 0 600 50 H I C CNN "BOM"
@@ -66,11 +66,11 @@ X SHIELD SH -125 -300 150 R 50 0 1 1 P
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_CONN_01X02
+# CONN_01X02
 #
-DEF squelch_board-rescue_CONN_01X02 J 0 40 Y N 1 F N
+DEF CONN_01X02 J 0 40 Y N 1 F N
 F0 "J" 0 150 50 H V C CNN
-F1 "squelch_board-rescue_CONN_01X02" 100 0 50 V V C CNN
+F1 "CONN_01X02" 100 0 50 V V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -88,11 +88,11 @@ X P2 2 -200 -50 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_CONN_01X03
+# CONN_01X03
 #
-DEF squelch_board-rescue_CONN_01X03 J 0 40 Y N 1 F N
+DEF CONN_01X03 J 0 40 Y N 1 F N
 F0 "J" 0 200 50 H V C CNN
-F1 "squelch_board-rescue_CONN_01X03" 100 0 50 V V C CNN
+F1 "CONN_01X03" 100 0 50 V V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -112,11 +112,11 @@ X P3 3 -200 -100 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_CONN_01X05
+# CONN_01X05
 #
-DEF squelch_board-rescue_CONN_01X05 J 0 40 Y N 1 F N
+DEF CONN_01X05 J 0 40 Y N 1 F N
 F0 "J" 0 300 50 H V C CNN
-F1 "squelch_board-rescue_CONN_01X05" 100 0 50 V V C CNN
+F1 "CONN_01X05" 100 0 50 V V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -140,11 +140,11 @@ X P5 5 -200 -200 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_CONN_02X04
+# CONN_02X04
 #
-DEF squelch_board-rescue_CONN_02X04 J 0 1 Y N 1 F N
+DEF CONN_02X04 J 0 1 Y N 1 F N
 F0 "J" 0 250 50 H V C CNN
-F1 "squelch_board-rescue_CONN_02X04" 0 -250 50 H V C CNN
+F1 "CONN_02X04" 0 -250 50 H V C CNN
 F2 "" 0 -1200 50 H I C CNN
 F3 "" 0 -1200 50 H I C CNN
 $FPLIST
@@ -174,11 +174,11 @@ X P8 8 250 -150 150 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_CONN_COAXIAL
+# CONN_COAXIAL
 #
-DEF squelch_board-rescue_CONN_COAXIAL J 0 40 Y N 1 F N
+DEF CONN_COAXIAL J 0 40 Y N 1 F N
 F0 "J" 10 120 50 H V C CNN
-F1 "squelch_board-rescue_CONN_COAXIAL" 115 0 50 V V C CNN
+F1 "CONN_COAXIAL" 115 0 50 V V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -199,11 +199,11 @@ X Ext 2 0 -200 100 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_CP2105
+# CP2105
 #
-DEF squelch_board-rescue_CP2105 U 0 40 Y Y 1 F N
+DEF CP2105 U 0 40 Y Y 1 F N
 F0 "U" 0 1050 50 H V C CNN
-F1 "squelch_board-rescue_CP2105" 0 950 50 H V C CNN
+F1 "CP2105" 0 950 50 H V C CNN
 F2 "IPC7351-Nominal:PQFN50P400X400X100-25" 0 -1100 50 H I C CNN
 F3 "https://www.silabs.com/Support%20Documents/TechnicalDocs/cp2105.pdf" 0 -1200 50 H I C CNN
 F4 "IC SILABS CP2105" 0 -1300 50 H I C CNN "BOM"
@@ -237,11 +237,11 @@ X ~RST 9 -700 -100 200 R 50 50 1 1 C
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_FILTER
+# FILTER
 #
-DEF squelch_board-rescue_FILTER FB 0 40 Y N 1 F N
+DEF FILTER FB 0 40 Y N 1 F N
 F0 "FB" 0 150 50 H V C CNN
-F1 "squelch_board-rescue_FILTER" 0 -100 50 H V C CNN
+F1 "FILTER" 0 -100 50 H V C CNN
 F2 "" 0 0 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 DRAW
@@ -256,11 +256,11 @@ X 2 2 350 0 150 L 40 40 1 1 P
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_Fuse
+# Fuse
 #
-DEF squelch_board-rescue_Fuse F 0 0 N Y 1 F N
+DEF Fuse F 0 0 N Y 1 F N
 F0 "F" 80 0 50 V V C CNN
-F1 "squelch_board-rescue_Fuse" -75 0 50 V V C CNN
+F1 "Fuse" -75 0 50 V V C CNN
 F2 "" -70 0 50 V I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -274,11 +274,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_GND
+# GND
 #
-DEF squelch_board-rescue_GND #PWR 0 0 Y Y 1 F P
+DEF GND #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -250 50 H I C CNN
-F1 "squelch_board-rescue_GND" 0 -150 50 H V C CNN
+F1 "GND" 0 -150 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -287,11 +287,11 @@ X GND 1 0 0 0 D 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_LED
+# LED
 #
-DEF squelch_board-rescue_LED D 0 40 Y N 1 F N
+DEF LED D 0 40 Y N 1 F N
 F0 "D" 0 100 50 H V C CNN
-F1 "squelch_board-rescue_LED" 0 -100 50 H V C CNN
+F1 "LED" 0 -100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -308,11 +308,11 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_LM7805CT
+# LM7805CT
 #
-DEF squelch_board-rescue_LM7805CT U 0 40 Y Y 1 F N
+DEF LM7805CT U 0 40 Y Y 1 F N
 F0 "U" -200 200 50 H V C CNN
-F1 "squelch_board-rescue_LM7805CT" 0 200 50 H V L CNN
+F1 "LM7805CT" 0 200 50 H V L CNN
 F2 "TO-220" 0 100 50 H I C CIN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -326,11 +326,11 @@ X OUT 3 400 50 150 L 50 50 1 1 w
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_MCP6002
+# MCP6002
 #
-DEF squelch_board-rescue_MCP6002 U 0 10 Y Y 2 F N
+DEF MCP6002 U 0 10 Y Y 2 F N
 F0 "U" 0 150 50 H V L CNN
-F1 "squelch_board-rescue_MCP6002" 0 -150 50 H V L CNN
+F1 "MCP6002" 0 -150 50 H V L CNN
 F2 "" -100 50 50 H I C CNN
 F3 "" 0 150 50 H I C CNN
 $FPLIST
@@ -352,11 +352,11 @@ X ~ 7 300 0 100 L 50 50 2 1 O
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_MMBD4148SE
+# MMBD4148SE
 #
-DEF squelch_board-rescue_MMBD4148SE D 0 0 Y N 1 F N
+DEF MMBD4148SE D 0 0 Y N 1 F N
 F0 "D" 0 350 50 H V C CNN
-F1 "squelch_board-rescue_MMBD4148SE" 0 250 50 H V C CNN
+F1 "MMBD4148SE" 0 250 50 H V C CNN
 F2 "smd-semi:SOT-23" 0 -150 60 H I C CNN
 F3 "" -50 0 60 V V C CNN
 F4 "DIODE MMBD4148SE" 0 -250 60 H I C CNN "BOM"
@@ -392,11 +392,11 @@ X COM 3 50 0 60 U 40 50 1 2 P
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_MMBT2222A
+# MMBT2222A
 #
-DEF squelch_board-rescue_MMBT2222A Q 0 0 Y N 1 F N
+DEF MMBT2222A Q 0 0 Y N 1 F N
 F0 "Q" 300 50 50 H V C CNN
-F1 "squelch_board-rescue_MMBT2222A" 300 -50 50 H V C CNN
+F1 "MMBT2222A" 300 -50 50 H V C CNN
 F2 "smd-semi:SOT-23" 0 -250 50 H I C CNN
 F3 "" 0 0 60 H V C CNN
 F4 "NPN MMBT2222A" 0 -150 60 H I C CNN "BOM"
@@ -411,11 +411,11 @@ X C 3 50 100 25 D 40 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_R
+# R
 #
-DEF squelch_board-rescue_R R 0 0 N Y 1 F N
+DEF R R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "squelch_board-rescue_R" 0 0 50 V V C CNN
+F1 "R" 0 0 50 V V C CNN
 F2 "" -70 0 50 V I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -429,11 +429,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_S1B
+# S1B
 #
-DEF squelch_board-rescue_S1B D 0 0 Y N 1 F N
+DEF S1B D 0 0 Y N 1 F N
 F0 "D" 150 50 50 H V C CNN
-F1 "squelch_board-rescue_S1B" 150 -50 50 H V C CNN
+F1 "S1B" 150 -50 50 H V C CNN
 F2 "IPC7351-Nominal:DIOM5326X292" 0 -150 50 H I C CNN
 F3 "" 0 0 60 H V C CNN
 F4 "DIODE S1B" 0 -250 60 H I C CNN "BOM"
@@ -446,11 +446,11 @@ X A 2 0 100 50 D 40 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_SCREW
+# SCREW
 #
-DEF squelch_board-rescue_SCREW MP 0 40 Y Y 1 L N
+DEF SCREW MP 0 40 Y Y 1 L N
 F0 "MP" 0 250 50 H V C CNN
-F1 "squelch_board-rescue_SCREW" 0 150 50 H V C CNN
+F1 "SCREW" 0 150 50 H V C CNN
 F2 "mech:SCREW-4-SUPPORTED" 0 0 50 H I C CNN
 F3 "" 0 0 60 H V C CNN
 $FPLIST
@@ -464,11 +464,11 @@ X ~ 1 0 -150 50 U 0 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_SP0503BAHT
+# SP0503BAHT
 #
-DEF squelch_board-rescue_SP0503BAHT TVS 0 0 Y Y 1 F N
+DEF SP0503BAHT TVS 0 0 Y Y 1 F N
 F0 "TVS" 0 400 50 H V C CNN
-F1 "squelch_board-rescue_SP0503BAHT" 0 300 50 H V C CNN
+F1 "SP0503BAHT" 0 300 50 H V C CNN
 F2 "smd-semi:SOT-143" 0 -300 50 H I C CNN
 F3 "http://www.littelfuse.com/~/media/files/littelfuse/technical%20resources/documents/data%20sheets/sp05xxba.pdf" 0 -400 50 H I C CNN
 F4 "Littelfuse" 0 -600 50 H I C CNN "Manuf"
@@ -499,11 +499,11 @@ X ~ 4 150 200 100 D 50 0 1 1 P
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_STM32F030F4P6
+# STM32F030F4P6
 #
-DEF squelch_board-rescue_STM32F030F4P6 U 0 40 Y Y 1 F N
+DEF STM32F030F4P6 U 0 40 Y Y 1 F N
 F0 "U" 0 1000 50 H V C CNN
-F1 "squelch_board-rescue_STM32F030F4P6" 0 900 50 H V C CNN
+F1 "STM32F030F4P6" 0 900 50 H V C CNN
 F2 "IPC7351-Nominal:QFP50P900X900X160-48" 0 1050 50 H I C CNN
 F3 "" 0 1050 50 H V C CNN
 F4 "IC ST STM32F030F4P6" 450 1200 50 H I C CNN "BOM"
@@ -535,11 +535,11 @@ X PA3 9 750 400 150 L 50 50 1 1 T
 ENDDRAW
 ENDDEF
 #
-# squelch_board-rescue_TEST
+# TEST
 #
-DEF squelch_board-rescue_TEST TP 0 40 N N 1 F N
+DEF TEST TP 0 40 N N 1 F N
 F0 "TP" 0 300 50 H V C BNN
-F1 "squelch_board-rescue_TEST" 0 250 50 H V C CNN
+F1 "TEST" 0 250 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
