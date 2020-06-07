@@ -3,6 +3,7 @@
 #include "chprintf.h"
 
 #include "io.h"
+#include "backlog.h"
 
 #define BUF_SIZE 1024
 #define BACKLOG_BUF_SIZE 12
@@ -10,57 +11,6 @@
 static adcsample_t sample_buffer[BUF_SIZE] = {0};
 volatile adcsample_t *first_sample, *last_sample;
 binary_semaphore_t wait_for_sample;
-
-typedef struct
-{
-    uint32_t buffer[12];
-    uint8_t pos;
-} circular_buf_t;
-
-void circular_buf_init(circular_buf_t *c)
-{
-    c->pos = 0;
-    for(uint8_t i=0; i < BACKLOG_BUF_SIZE; i++)
-    {
-        c->buffer[i] = 0;
-    }
-}
-
-void circular_buf_append(circular_buf_t *c, uint32_t entry)
-{
-    c->buffer[c->pos] = entry;
-    c->pos += 1;
-    if(c->pos >= BACKLOG_BUF_SIZE) c->pos = 0;
-}
-
-void circular_buf_reset(circular_buf_t *c, uint32_t entry)
-{
-    for(uint8_t i=0; i < BACKLOG_BUF_SIZE; i++)
-    {
-        c->buffer[i] = entry;
-    }
-}
-
-bool circular_buf_all_lower_than(circular_buf_t *c, uint32_t threshold)
-{
-    for(uint8_t i=0; i < BACKLOG_BUF_SIZE; i++)
-    {
-        // We don't consider the last entry that was added for this, since it may
-        // already contain samples collected after PTT clearing.
-        if(c->buffer[i] >= threshold && i != (c->pos -1) % BACKLOG_BUF_SIZE) return false;
-    }
-    return true;
-}
-
-bool circular_buf_any_lower_than(circular_buf_t *c, uint32_t threshold)
-{
-    for(uint8_t i=0; i < BACKLOG_BUF_SIZE; i++)
-    {
-        if(c->buffer[i] < threshold) return true;
-    }
-    return false;
-}
-
 
 static void adc_callback(ADCDriver *adcp, adcsample_t *buffer, size_t n)
 {
