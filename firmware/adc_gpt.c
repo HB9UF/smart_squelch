@@ -26,6 +26,7 @@ const ADCConversionGroup adcgrpcfg = {
 };
 
 
+// Timer runs at 1 MHz
 static const GPTConfig gptcfg = {
     frequency:    1000000U,
     callback:     NULL,
@@ -41,5 +42,5 @@ void adc_init(void)
 
     adcStartConversion(&ADCD1, &adcgrpcfg, sample_buffer, SAMPLE_BUF_SIZE);
     gptStart(&GPTD1, &gptcfg);
-    gptStartContinuous(&GPTD1, 20);
+    gptStartContinuous(&GPTD1, 20); // We sample at 1 MHz/20 = 50 kHz
 }
