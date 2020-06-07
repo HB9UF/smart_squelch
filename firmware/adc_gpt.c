@@ -21,7 +21,7 @@ const ADCConversionGroup adcgrpcfg = {
     error_cb:     NULL,
     cfgr1:        ADC_CFGR1_EXTEN_0 | ADC_CFGR1_RES_12BIT,
     tr:           ADC_TR(0, 0),
-    smpr:         ADC_SMPR_SMP_7P5,
+    smpr:         ADC_SMPR_SMP_1P5,
     chselr:       ADC_CHSELR_CHSEL0
 };
 
