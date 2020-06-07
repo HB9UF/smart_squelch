@@ -8,7 +8,7 @@
 
 typedef struct
 {
-    uint32_t buffer[12];
+    uint32_t buffer[BACKLOG_BUF_SIZE];
     uint8_t pos;
 } circular_buf_t;
 
