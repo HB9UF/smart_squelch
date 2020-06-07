@@ -54,7 +54,7 @@ int main(void)
     while (true)
     {
         chBSemWait(&wait_for_sample);
-        palClearPad(GPIOA, 4);
+        // palClearPad(GPIOA, 4); // Use this to check how much idle time we have per cycle
         uint32_t sum = 0;
         for(adcsample_t *s = first_sample; s < last_sample; s++)
         {
@@ -105,7 +105,7 @@ int main(void)
             mean = 0;
             counter = 0;
         }
-        palSetPad(GPIOA, 4);
+        // palSetPad(GPIOA, 4); // See comment above
 
     }
 }
