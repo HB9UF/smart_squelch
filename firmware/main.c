@@ -3,67 +3,68 @@
 #include "chprintf.h"
 #include "string.h"
 
-#define BACKLOG_SIZE 100
+#define BUF_SIZE 1024
+#define BACKLOG_BUF_SIZE 12
 
-//#define io_set_led()   palSetPad(GPIOA, 4)
-//#define io_clear_led() palClearPad(GPIOA, 4)
-
-static adcsample_t sample[1] = {0};
-volatile adcsample_t current_sample = 0;
-static adcsample_t sample_backlog[BACKLOG_SIZE] = {0};
-volatile int32_t sum = 0;
-volatile uint8_t valid_sample_counter = 0;
-
+static adcsample_t sample_buffer[BUF_SIZE] = {0};
+volatile adcsample_t *first_sample, *last_sample;
 binary_semaphore_t wait_for_sample;
 
-typedef struct config_t
+typedef struct
 {
-    uint16_t debug_period_ms; // How often to print statistics. Every x ms, 0 means never
-    adcsample_t threshold;    // Sample 
-} config_t;
+    uint32_t buffer[12];
+    uint8_t pos;
+} circular_buf_t;
 
-typedef struct stats_t
+void circular_buf_init(circular_buf_t *c)
 {
-    adcsample_t min;
-    adcsample_t max;
-    adcsample_t min2;
-    uint16_t n_cos;
-} stats_t;
+    c->pos = 0;
+    for(uint8_t i=0; i < BACKLOG_BUF_SIZE; i++)
+    {
+        c->buffer[i] = 0;
+    }
+}
 
-static config_t config =
+void circular_buf_append(circular_buf_t *c, uint32_t entry)
 {
-    debug_period_ms :  100,
-    threshold:         200,
-};
+    c->buffer[c->pos] = entry;
+    c->pos += 1;
+    if(c->pos >= BACKLOG_BUF_SIZE) c->pos = 0;
+}
 
-static stats_t stats = 
+void circular_buf_reset(circular_buf_t *c, uint32_t entry)
 {
-    min: 0xffff,
-    min2: 0xffff,
-    max: 0,
-    n_cos: 0,
-};
+    for(uint8_t i=0; i < BACKLOG_BUF_SIZE; i++)
+    {
+        c->buffer[i] = entry;
+    }
+}
+
+bool circular_buf_all_lower_than(circular_buf_t *c, uint32_t threshold)
+{
+    for(uint8_t i=0; i < BACKLOG_BUF_SIZE; i++)
+    {
+        // We don't consider the last entry that was added for this, since it may
+        // already contain samples collected after PTT clearing.
+        if(c->buffer[i] >= threshold && i != (c->pos -1) % BACKLOG_BUF_SIZE) return false;
+    }
+    return true;
+}
+
+bool circular_buf_any_lower_than(circular_buf_t *c, uint32_t threshold)
+{
+    for(uint8_t i=0; i < BACKLOG_BUF_SIZE; i++)
+    {
+        if(c->buffer[i] < threshold) return true;
+    }
+    return false;
+}
+
 
 static void adc_callback(ADCDriver *adcp, adcsample_t *buffer, size_t n)
 {
-    static uint8_t pointer = 0;
-    static uint8_t counter = 0;
-    /* We use every sample, but only every 5th for the history. Thus, the 
-     * sampling rate is 1 kHz but the backlog is of a full second, given a
-     * backlog buffer of 200 entries. (see #define BACKLOG_SIZE)
-     */
-    current_sample = *buffer;
-
-    if(5 == counter++)
-    {
-        counter = 0;
-        sample_backlog[pointer] = *buffer;
-        sum += sample_backlog[pointer];
-        sum -= sample_backlog[(pointer+1) % BACKLOG_SIZE];
-        if(valid_sample_counter < BACKLOG_SIZE) valid_sample_counter++;
-        //chprintf((BaseSequentialStream*)&SD1, "%d %d %d\r\n", sample_backlog[pointer], sample_backlog[(pointer+1) % 200], sum/200);
-        pointer = (pointer + 1) % BACKLOG_SIZE;
-    }
+    first_sample = buffer;
+    last_sample = buffer+n;
     chBSemSignalI(&wait_for_sample);
 }
 
@@ -74,48 +75,40 @@ const ADCConversionGroup adcgrpcfg = {
     error_cb:     NULL,
     cfgr1:        ADC_CFGR1_EXTEN_0 | ADC_CFGR1_RES_12BIT,
     tr:           ADC_TR(0, 0),
-    smpr:         ADC_SMPR_SMP_1P5,
+    smpr:         ADC_SMPR_SMP_7P5,
     chselr:       ADC_CHSELR_CHSEL0
 };
 
 
 static const GPTConfig gptcfg = {
-    frequency:    10000U,
+    frequency:    1000000U,
     callback:     NULL,
     cr2:          TIM_CR2_MMS_1,  /* MMS = 010 = TRGO on Update Event.        */
     dier:         0U
 };
 
+const uint32_t WEAK_THRESHOLD = 38000;
+const uint32_t STRONG_THRESHOLD = 7000;
 
-static THD_WORKING_AREA(waThread1, 128);
-static THD_FUNCTION(Thread1, arg)
+io_init(void)
 {
-    (void)arg;
-    chRegSetThreadName("console");
-    while (true)
-    {
-        msg_t key = chSequentialStreamGet((BaseSequentialStream*)&SD1);
-        stats.min = 0xffff;
-        stats.max = 0;
-        stats.min2 = 0xffff;
-        stats.n_cos = 0;
-    }
+    //palSetPad(GPIOA, GPIOA_LED_GREEN); // FIXME
+    palSetPadMode(GPIOA,  4, PAL_MODE_OUTPUT_PUSHPULL); // FIXME
+}
+
+void io_open_squelch(void)
+{
+}
+
+void io_close_squelch(void)
+{
 }
 
 int main(void)
 {
-    bool cos = false;
     halInit();
     chSysInit();
-
-    palSetPad(GPIOA, GPIOA_LED_GREEN); // let it pass
-    palSetPadMode(GPIOA,  4, PAL_MODE_OUTPUT_PUSHPULL);
-    palSetPadMode(GPIOA,  5, PAL_MODE_OUTPUT_OPENDRAIN);
-
-    palSetPadMode(GPIOF,  0, PAL_MODE_OUTPUT_PUSHPULL);
-    palSetPadMode(GPIOF,  1, PAL_MODE_OUTPUT_PUSHPULL);
-    //palSetPadMode(GPIOF,  1, PAL_MODE_OUTPUT_OPENDRAIN | PAL_MODE_INPUT_PULLUP);
-    palSetPad(GPIOF, 1);
+    io_init();
 
     palSetPadMode(GPIOA,  0, PAL_MODE_INPUT_ANALOG);
     adcStart(&ADCD1, NULL);
@@ -126,59 +119,74 @@ int main(void)
 
     chBSemObjectInit(&wait_for_sample, TRUE);
 
-
     chThdSleepMilliseconds(1000);
-    chThdCreateStatic(waThread1, sizeof(waThread1), NORMALPRIO, Thread1, NULL);
 
-    adcStartConversion(&ADCD1, &adcgrpcfg, sample, 1);
+    adcStartConversion(&ADCD1, &adcgrpcfg, sample_buffer, BUF_SIZE);
     gptStart(&GPTD1, &gptcfg);
-    GPTD1.tim->CR2 &= ~TIM_CR2_MMS;
-    GPTD1.tim->CR2 |= TIM_CR2_MMS_1;
-    gptStartContinuous(&GPTD1, 10);
+    gptStartContinuous(&GPTD1, 20);
 
-    uint16_t debug_print_counter = 0;
-    adcsample_t last_sample = 0;
-    char lag = ' ';
+    circular_buf_t backlog;
+    circular_buf_init(&backlog);
 
+    bool squelch_open = false;
+    uint32_t mean = 0;
+    uint8_t counter = 0;
+    char squelch_flag = ' ';
     while (true)
     {
         chBSemWait(&wait_for_sample);
-        //palClearPad(GPIOF, 0);
-
-        if(current_sample < stats.min) { stats.min = current_sample; stats.min2 = last_sample;}
-        if(current_sample > stats.max) stats.max = current_sample;
-
-        if(config.debug_period_ms && ++debug_print_counter == config.debug_period_ms)
+        palClearPad(GPIOA, 4);
+        uint32_t sum = 0;
+        for(adcsample_t *s = first_sample; s < last_sample; s++)
         {
-            debug_print_counter = 0;
-            chprintf((BaseSequentialStream*)&SD1, "x=%d x̄=%d, min=%d, max=%d, n=%d, min2=%d\r\n", current_sample, sum/BACKLOG_SIZE, stats.min, stats.max, stats.n_cos, stats.min2);
+            int16_t tmp = (int16_t) *s;
+            sum += (tmp-2047)*(tmp-2047);
         }
-
-        if(cos && current_sample > 2*config.threshold)
+        mean += sum/8;
+        if(++counter == 8)
         {
-            if(last_sample < 50 || sum/BACKLOG_SIZE <= 20 || sum/BACKLOG_SIZE > 2*config.threshold)
-            //if(sum/valid_sample_counter < 5 || sum/valid_sample_counter < config.threshold)
+            // We hit this condition approx. 12 times per second
+            mean /= 1000; // Divide by 1000 to get numbers that are easier to handle
+            bool opening_squelch = false;
+            if(squelch_open && mean > WEAK_THRESHOLD)
             {
-                palSetPad(GPIOF, 1);
-                chprintf((BaseSequentialStream*)&SD1, "%c   %d\r\n", lag, sum/BACKLOG_SIZE);
-                cos = false;
+                if(circular_buf_all_lower_than(&backlog, STRONG_THRESHOLD))
+                {
+                    io_close_squelch();
+                    squelch_open = false;
+                    squelch_flag = ' ';
+                }
+                else if(circular_buf_any_lower_than(&backlog, WEAK_THRESHOLD))
+                {
+                    // Don't close squelch just yet, enter grace tail instead.
+                    squelch_flag = '?';
+                }
+                else
+                {
+                    io_close_squelch();
+                    squelch_open = false;
+                    squelch_flag = ' ';
+                }
             }
-            else
+            else if(!squelch_open && mean < WEAK_THRESHOLD)
             {
-                lag = '+';
+                io_open_squelch();
+                circular_buf_reset(&backlog, 0);
+                squelch_open = true;
+                opening_squelch = true;
+                squelch_flag = '*';
             }
+            if(!opening_squelch)
+            {
+                // We only add this to the backlog if we are sure that PTT was asserted for the full duration
+                // of the acquisition. Otherwise, the mean may be too low and trigger the grace tail.
+                circular_buf_append(&backlog, mean);
+            }
+            chprintf((BaseSequentialStream*)&SD1, "%c %c %d\r\n", squelch_open ? '!' : ' ', squelch_flag, mean);
+            mean = 0;
+            counter = 0;
         }
-        if(!cos && current_sample < config.threshold && last_sample < config.threshold)
-        {
-            palClearPad(GPIOF, 1);
-            cos = true;
-            lag = ' ';
-            valid_sample_counter = 1;
-            chprintf((BaseSequentialStream*)&SD1, "COS %d\r\n", sum/BACKLOG_SIZE);
-            stats.n_cos++;
-        }
+        palSetPad(GPIOA, 4);
 
-        last_sample = current_sample;
-        //palSetPad(GPIOF, 0);
     }
 }
