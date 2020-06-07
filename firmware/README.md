@@ -17,7 +17,7 @@ The STM32 microcontroller can be flashed from USB using the 'stm32flash-code' to
 2. Reset the microcontroller. The BOOT0 pin is high by default, starting the bootloader in reset:
 ```
 echo 0 > /sys/class/gpio/gpio355/value
-sleep 1
+sleep 0.1
 echo 1 > /sys/class/gpio/gpio355/value
 sleep 1
 ```
@@ -26,7 +26,7 @@ sleep 1
 5. Reset the microontroller once again:
 ```
 echo 0 > /sys/class/gpio/gpio355/value
-sleep 1
+sleep 0.1
 echo 1 > /sys/class/gpio/gpio355/value
 ```
 
