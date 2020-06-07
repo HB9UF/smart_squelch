@@ -3,6 +3,8 @@
 #include "chprintf.h"
 #include "string.h"
 
+#include "io.h"
+
 #define BUF_SIZE 1024
 #define BACKLOG_BUF_SIZE 12
 
@@ -89,23 +91,6 @@ static const GPTConfig gptcfg = {
 
 const uint32_t WEAK_THRESHOLD = 38000;
 const uint32_t STRONG_THRESHOLD = 7000;
-
-void io_init(void)
-{
-    //palSetPad(GPIOA, GPIOA_LED_GREEN); // FIXME
-    palSetPadMode(GPIOA,  4, PAL_MODE_OUTPUT_PUSHPULL); // FIXME
-    palSetPadMode(GPIOF,  1, PAL_MODE_OUTPUT_PUSHPULL);
-}
-
-void io_open_squelch(void)
-{
-    palClearPad(GPIOF, 1);
-}
-
-void io_close_squelch(void)
-{
-    palSetPad(GPIOF, 1);
-}
 
 int main(void)
 {
