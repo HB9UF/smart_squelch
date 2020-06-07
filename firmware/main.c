@@ -1,7 +1,6 @@
 #include "ch.h"
 #include "hal.h"
 #include "chprintf.h"
-#include "string.h"
 
 #include "io.h"
 
