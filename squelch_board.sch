@@ -569,7 +569,7 @@ F 3 "" H 7500 3725 50  0000 C CNN
 	1    7500 3725
 	1    0    0    -1  
 $EndComp
-Text Notes 6100 2425 0    60   ~ 0
+Text Notes 6125 2425 0    60   ~ 0
 Todo:\n- Taper off\n- output divider\n- R2\n- 576-3193-1-ND LDO with smaller footprint
 Text Notes 550  1050 0    300  ~ 60
 HB9UF Squelch Board Rev 1.3
@@ -611,73 +611,61 @@ $EndComp
 Text Label 3525 4200 0    60   ~ 0
 AF_BUF
 $Comp
-L squelch_board-rescue:STM32F030F4P6 U1
-U 1 1 58514CCA
-P 9550 1550
-F 0 "U1" H 9050 2400 50  0000 C CNN
-F 1 "STM32F030F4P6" H 9850 2400 50  0000 C CNN
-F 2 "IPC7351-Nominal:SOP65P640X120-20" H 9550 300 50  0001 C CNN
-F 3 "" H 9550 2600 50  0000 C CNN
-F 4 "DIST DIGIKEY 497-14044-5-ND" H 9550 500 50  0001 C CNN "BOM"
-	1    9550 1550
-	1    0    0    -1  
-$EndComp
-$Comp
 L squelch_board-rescue:C C2
 U 1 1 58515408
-P 8175 1100
-F 0 "C2" H 8275 1175 50  0000 L CNN
-F 1 "0.1u" H 8275 1100 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603" H 8290 1009 50  0001 L CNN
-F 3 "" H 8175 1100 50  0000 C CNN
-F 4 "CAP MLCC 0.1uF 10% ≥X5R [0603]" H 8175 1100 60  0001 C CNN "BOM"
-	1    8175 1100
+P 8200 1475
+F 0 "C2" H 8300 1550 50  0000 L CNN
+F 1 "0.1u" H 8300 1475 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 8315 1384 50  0001 L CNN
+F 3 "" H 8200 1475 50  0000 C CNN
+F 4 "CAP MLCC 0.1uF 10% ≥X5R [0603]" H 8200 1475 60  0001 C CNN "BOM"
+	1    8200 1475
 	1    0    0    -1  
 $EndComp
 $Comp
 L squelch_board-rescue:C C1
 U 1 1 585158BC
-P 7725 1100
-F 0 "C1" H 7825 1175 50  0000 L CNN
-F 1 "0.1u" H 7825 1100 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603" H 7840 1009 50  0001 L CNN
-F 3 "" H 7725 1100 50  0000 C CNN
-F 4 "CAP MLCC 0.1uF 10% ≥X5R [0603]" H 7725 1100 60  0001 C CNN "BOM"
-	1    7725 1100
+P 7750 1475
+F 0 "C1" H 7850 1550 50  0000 L CNN
+F 1 "0.1u" H 7850 1475 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 7865 1384 50  0001 L CNN
+F 3 "" H 7750 1475 50  0000 C CNN
+F 4 "CAP MLCC 0.1uF 10% ≥X5R [0603]" H 7750 1475 60  0001 C CNN "BOM"
+	1    7750 1475
 	1    0    0    -1  
 $EndComp
 $Comp
 L squelch_board-rescue:GND #PWR019
 U 1 1 58515D2D
-P 7950 1250
-F 0 "#PWR019" H 7950 1000 50  0001 C CNN
-F 1 "GND" H 7955 1077 50  0001 C CNN
-F 2 "" H 7950 1250 50  0000 C CNN
-F 3 "" H 7950 1250 50  0000 C CNN
-	1    7950 1250
+P 7975 1625
+F 0 "#PWR019" H 7975 1375 50  0001 C CNN
+F 1 "GND" H 7980 1452 50  0001 C CNN
+F 2 "" H 7975 1625 50  0000 C CNN
+F 3 "" H 7975 1625 50  0000 C CNN
+	1    7975 1625
 	1    0    0    -1  
 $EndComp
 $Comp
 L squelch_board-rescue:GND #PWR020
 U 1 1 58516217
-P 8850 2350
-F 0 "#PWR020" H 8850 2100 50  0001 C CNN
-F 1 "GND" H 8855 2177 50  0001 C CNN
-F 2 "" H 8850 2350 50  0000 C CNN
-F 3 "" H 8850 2350 50  0000 C CNN
-	1    8850 2350
+P 9550 2225
+F 0 "#PWR020" H 9550 1975 50  0001 C CNN
+F 1 "GND" H 9555 2052 50  0001 C CNN
+F 2 "" H 9550 2225 50  0000 C CNN
+F 3 "" H 9550 2225 50  0000 C CNN
+	1    9550 2225
 	1    0    0    -1  
 $EndComp
 $Comp
 L squelch_board-rescue:R R1
 U 1 1 58516660
-P 8375 1500
-F 0 "R1" H 8445 1546 50  0000 L CNN
-F 1 "22k" H 8445 1455 50  0000 L CNN
-F 2 "Resistors_SMD:R_0603" V 8305 1500 50  0001 C CNN
-F 3 "" H 8375 1500 50  0000 C CNN
-F 4 "RES SMD 22k 1% [0603]" H 8375 1500 60  0001 C CNN "BOM"
-	1    8375 1500
+P 8575 1475
+F 0 "R1" H 8645 1521 50  0000 L CNN
+F 1 "22k" H 8645 1430 50  0000 L CNN
+F 2 "Resistors_SMD:R_0603" V 8505 1475 50  0001 C CNN
+F 3 "" H 8575 1475 50  0000 C CNN
+F 4 "RES SMD 22k 1% [0603]" H 8575 1475 60  0001 C CNN "BOM"
+	1    8575 1475
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -695,25 +683,25 @@ $EndComp
 $Comp
 L squelch_board-rescue:GND #PWR021
 U 1 1 58517133
-P 8375 1650
-F 0 "#PWR021" H 8375 1400 50  0001 C CNN
-F 1 "GND" H 8380 1477 50  0001 C CNN
-F 2 "" H 8375 1650 50  0000 C CNN
-F 3 "" H 8375 1650 50  0000 C CNN
-	1    8375 1650
+P 8575 1625
+F 0 "#PWR021" H 8575 1375 50  0001 C CNN
+F 1 "GND" H 8580 1452 50  0001 C CNN
+F 2 "" H 8575 1625 50  0000 C CNN
+F 3 "" H 8575 1625 50  0000 C CNN
+	1    8575 1625
 	1    0    0    -1  
 $EndComp
-Text Label 7725 950  0    60   ~ 0
+Text Label 7750 1325 0    60   ~ 0
 3V3
-Text Label 10300 1750 0    60   ~ 0
+Text Label 10350 1725 0    60   ~ 0
 uC2USB
-Text Label 10300 1850 0    60   ~ 0
+Text Label 10350 1825 0    60   ~ 0
 USB2uC
-Text Label 10300 850  0    60   ~ 0
+Text Label 10350 925  0    60   ~ 0
 NOISE
-Text Label 10300 950  0    60   ~ 0
+Text Label 10350 1025 0    60   ~ 0
 AF_BUF
-Text Label 10300 1350 0    60   ~ 0
+Text Label 10350 1425 0    60   ~ 0
 LPF_OUT
 $Comp
 L squelch_board-rescue:S1B D2
@@ -1100,18 +1088,12 @@ Wire Wire Line
 	4250 5775 4250 5575
 Connection ~ 4250 5575
 Wire Wire Line
-	7725 950  8175 950 
-Connection ~ 8175 950 
+	7750 1325 8200 1325
 Wire Wire Line
-	7725 1250 7950 1250
-Connection ~ 7950 1250
+	7750 1625 7975 1625
+Connection ~ 7975 1625
 Wire Wire Line
-	8850 850  8725 850 
-Wire Wire Line
-	8725 850  8725 950 
-Connection ~ 8725 950 
-Wire Wire Line
-	8375 1350 8375 1150
+	8575 1325 8575 1125
 Wire Wire Line
 	2475 1800 2800 1800
 Wire Notes Line
@@ -1186,9 +1168,9 @@ Text Label 10350 3900 0    60   ~ 0
 uC2USB
 Text Label 10350 3800 0    60   ~ 0
 USB2uC
-Text Label 8850 1350 2    60   ~ 0
+Text Label 9050 925  2    60   ~ 0
 ~RST
-Text Label 8850 1150 2    60   ~ 0
+Text Label 9050 1125 2    60   ~ 0
 BOOT0
 Text Label 10350 4150 0    60   ~ 0
 BOOT0
@@ -1531,16 +1513,16 @@ Text Label 1550 7025 2    60   ~ 0
 uC9
 Text Label 2050 7025 0    60   ~ 0
 uC10
-Text Label 8850 1550 2    60   ~ 0
+Text Label 9050 1725 2    60   ~ 0
 uC2
-Text Label 8850 1750 2    60   ~ 0
+Text Label 9050 1825 2    60   ~ 0
 uC3
-Text Label 10300 1150 0    60   ~ 0
+Text Label 10350 1225 0    60   ~ 0
 uC9
-Text Label 10300 1250 0    60   ~ 0
+Text Label 10350 1325 0    60   ~ 0
 uC10
 Wire Wire Line
-	8375 1150 8850 1150
+	8575 1125 9050 1125
 $Comp
 L squelch_board-rescue:C C23
 U 1 1 58A0A787
@@ -1559,7 +1541,7 @@ Wire Wire Line
 	6875 3625 6850 3625
 Text Label 6875 3625 1    60   ~ 0
 AF_MUTE
-Text Label 10300 1050 0    60   ~ 0
+Text Label 10350 1125 0    60   ~ 0
 AF_MUTE
 $Comp
 L squelch_board-rescue:C C24
@@ -1905,11 +1887,11 @@ F 4 "DIST DIGIKEY WM3914CT-ND" H 6950 3825 60  0001 C CNN "BOM"
 	1    6950 3825
 	-1   0    0    -1  
 $EndComp
-NoConn ~ 10300 1450
-NoConn ~ 10300 1550
-NoConn ~ 10300 2050
-NoConn ~ 10300 2150
-NoConn ~ 10300 2350
+NoConn ~ 10350 1525
+NoConn ~ 10350 1625
+NoConn ~ 10350 1925
+NoConn ~ 10350 2025
+NoConn ~ 9050 2025
 NoConn ~ 10350 3500
 NoConn ~ 10350 3600
 NoConn ~ 10350 4050
@@ -1955,11 +1937,7 @@ Wire Wire Line
 Wire Wire Line
 	4250 5575 4500 5575
 Wire Wire Line
-	8175 950  8725 950 
-Wire Wire Line
-	7950 1250 8175 1250
-Wire Wire Line
-	8725 950  8850 950 
+	7975 1625 8200 1625
 Wire Wire Line
 	5950 5575 6100 5575
 Wire Wire Line
@@ -2066,4 +2044,29 @@ Text Label 6050 4000 0    60   ~ 0
 3V3
 Wire Wire Line
 	6550 5125 8125 5125
+Wire Wire Line
+	9650 725  9650 650 
+Wire Wire Line
+	8200 650  8200 1325
+Wire Wire Line
+	8200 650  9550 650 
+Connection ~ 8200 1325
+Connection ~ 9550 650 
+Wire Wire Line
+	9550 650  9650 650 
+Wire Wire Line
+	9550 725  9550 650 
+$Comp
+L MCU_ST_STM32F0:STM32F070F6Px U1
+U 1 1 5EEC5F6B
+P 9750 1425
+F 0 "U1" H 9200 2100 50  0000 C CNN
+F 1 "STM32F070F6P" H 10025 2125 50  0000 C CNN
+F 2 "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" H 9150 725 50  0001 R CNN
+F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00141386.pdf" H 9750 1425 50  0001 C CNN
+	1    9750 1425
+	1    0    0    -1  
+$EndComp
+Text Notes 8175 2050 0    60   ~ 0
+STM32F030F4P6\nmay also work
 $EndSCHEMATC
