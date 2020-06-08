@@ -456,7 +456,7 @@ F 3 "" H 6300 5975 50  0000 C CNN
 	1    6300 5975
 	1    0    0    -1  
 $EndComp
-Text Label 7600 4450 0    60   ~ 0
+Text Label 7200 5125 0    60   ~ 0
 3V3
 $Comp
 L squelch_board-rescue:C C14
@@ -856,18 +856,6 @@ F 4 "DIST DIGIKEY S1BFSCT-ND" H 1600 1550 60  0001 C CNN "BOM"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L squelch_board-rescue:R R23
-U 1 1 589C7254
-P 7600 4600
-F 0 "R23" H 7670 4646 50  0000 L CNN
-F 1 "0R" H 7670 4555 50  0000 L CNN
-F 2 "Resistors_SMD:R_0603" V -2795 -125 50  0001 C CNN
-F 3 "" H -2725 -125 50  0001 C CNN
-F 4 "RES SMD 0 [0603]" H 7600 4600 60  0001 C CNN "BOM"
-	1    7600 4600
-	1    0    0    -1  
-$EndComp
-$Comp
 L squelch_board-rescue:TEST TP1
 U 1 1 589CDADC
 P 2325 5875
@@ -1102,8 +1090,6 @@ Wire Wire Line
 Connection ~ 5375 5575
 Wire Wire Line
 	5375 6075 5375 6125
-Wire Notes Line
-	7100 4775 7100 6450
 Wire Wire Line
 	4175 5575 4250 5575
 Wire Wire Line
@@ -1145,14 +1131,6 @@ Wire Wire Line
 Wire Wire Line
 	975  1800 900  1800
 Connection ~ 6550 5125
-Wire Notes Line
-	7175 4000 8025 4000
-Wire Notes Line
-	8025 4000 8025 4800
-Wire Notes Line
-	8025 4800 7175 4800
-Wire Notes Line
-	7175 4800 7175 4000
 Wire Wire Line
 	8175 3350 8625 3350
 Wire Wire Line
@@ -2021,10 +1999,6 @@ Wire Wire Line
 Wire Wire Line
 	7025 5675 7475 5675
 Wire Wire Line
-	7600 5125 7600 4750
-Wire Wire Line
-	6550 5125 7600 5125
-Wire Wire Line
 	7925 5550 7885 5550
 $Comp
 L squelch_board-rescue:GND #PWR0101
@@ -2065,9 +2039,6 @@ Connection ~ 6300 5125
 Wire Wire Line
 	6300 5375 6300 5125
 Wire Wire Line
-	8125 5125 7600 5125
-Connection ~ 7600 5125
-Wire Wire Line
 	8125 5350 8125 5125
 $Comp
 L squelch_board-rescue:GND #PWR0102
@@ -2093,6 +2064,6 @@ F 3 "" H 6050 4600 50  0000 C CNN
 $EndComp
 Text Label 6050 4000 0    60   ~ 0
 3V3
-Text Notes 7225 4300 0    60   ~ 0
-Can be used for\npower supply\nripple rejection.
+Wire Wire Line
+	6550 5125 8125 5125
 $EndSCHEMATC
