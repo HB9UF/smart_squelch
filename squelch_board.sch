@@ -263,8 +263,6 @@ F 4 "CAP MLCC 0.039uF 5% NP0 [1206]" V 5925 3775 60  0001 C CNN "BOM"
 	1    5925 3775
 	0    1    1    0   
 $EndComp
-Text Label 6550 4300 0    60   ~ 0
-LPF_OUT
 $Comp
 L squelch_board-rescue:C C7
 U 1 1 571E6A6A
@@ -370,18 +368,6 @@ F 3 "" H 700 1800 50  0000 C CNN
 F 4 "DIST DIGIKEY ED10562-ND" H 700 1800 60  0001 C CNN "BOM"
 	1    700  1800
 	-1   0    0    1   
-$EndComp
-$Comp
-L squelch_board-rescue:APE8865U5-33-HF-3 U3
-U 1 1 577FD992
-P 5075 1850
-F 0 "U3" H 5075 2167 50  0000 C CNN
-F 1 "AP2202" H 5075 2076 50  0000 C CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23-5" H 5075 2076 50  0001 C CIN
-F 3 "" H 5075 1850 50  0000 C CNN
-F 4 "DIST DIGIKEY AP2202K-3.3TRG1" H 5075 1850 60  0001 C CNN "BOM"
-	1    5075 1850
-	1    0    0    -1  
 $EndComp
 NoConn ~ 5525 1950
 $Comp
@@ -558,17 +544,6 @@ Text Notes 4400 3400 0    60   ~ 0
 3rd order Sallen-Key LPF, cutoff 5.76 kHz
 Text Notes 4100 6425 0    60   ~ 0
 3rd order Butterworth Sallen-Key HPF, cutoff 7.5 kHz
-$Comp
-L squelch_board-rescue:GND #PWR013
-U 1 1 577F848C
-P 7500 3725
-F 0 "#PWR013" H 7500 3475 50  0001 C CNN
-F 1 "GND" H 7505 3552 50  0001 C CNN
-F 2 "" H 7500 3725 50  0000 C CNN
-F 3 "" H 7500 3725 50  0000 C CNN
-	1    7500 3725
-	1    0    0    -1  
-$EndComp
 Text Notes 6125 2425 0    60   ~ 0
 Todo:\n- Taper off\n- output divider\n- R2\n- 576-3193-1-ND LDO with smaller footprint
 Text Notes 550  1050 0    300  ~ 60
@@ -609,7 +584,7 @@ F 3 "" H 4250 6125 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 3525 4200 0    60   ~ 0
-AF_BUF
+AF
 $Comp
 L squelch_board-rescue:C C2
 U 1 1 58515408
@@ -669,18 +644,6 @@ F 4 "RES SMD 22k 1% [0603]" H 8575 1475 60  0001 C CNN "BOM"
 	1    0    0    -1  
 $EndComp
 $Comp
-L squelch_board-rescue:R R2
-U 1 1 5851673E
-P 6700 3625
-F 0 "R2" V 6500 3550 50  0000 L CNN
-F 1 "0" V 6600 3550 50  0000 L CNN
-F 2 "Resistors_SMD:R_0603" V 6630 3625 50  0001 C CNN
-F 3 "" H 6700 3625 50  0000 C CNN
-F 4 "RES SMD 0 [0603]" V 6700 3625 60  0001 C CNN "BOM"
-	1    6700 3625
-	0    1    1    0   
-$EndComp
-$Comp
 L squelch_board-rescue:GND #PWR021
 U 1 1 58517133
 P 8575 1625
@@ -700,9 +663,9 @@ USB2uC
 Text Label 10350 925  0    60   ~ 0
 NOISE
 Text Label 10350 1025 0    60   ~ 0
-AF_BUF
+AF
 Text Label 10350 1425 0    60   ~ 0
-LPF_OUT
+LPF
 $Comp
 L squelch_board-rescue:S1B D2
 U 1 1 5856CDA4
@@ -868,7 +831,7 @@ F 4 "DIST DIGIKEY 36-5018CT-ND" H 2975 5875 60  0001 C CNN "BOM"
 	1    0    0    -1  
 $EndComp
 Text Label 2325 5875 3    60   ~ 0
-AF_BUF
+AF
 Text Label 2975 5875 3    60   ~ 0
 NOISE
 Text Label 6700 5675 0    60   ~ 0
@@ -920,17 +883,6 @@ F 3 "" H 7600 3000 50  0000 C CNN
 F 4 "CAP MLCC 0.1uF 10% ≥X5R [0603]" H 7600 3000 60  0001 C CNN "BOM"
 	1    7600 3000
 	-1   0    0    -1  
-$EndComp
-$Comp
-L squelch_board-rescue:GND #PWR028
-U 1 1 589DCF95
-P 7475 3150
-F 0 "#PWR028" H 7525 3200 50  0001 C CNN
-F 1 "GND" H 7480 2977 50  0001 C CNN
-F 2 "" H -1200 -825 50  0001 C CNN
-F 3 "" H -1200 -825 50  0001 C CNN
-	1    7475 3150
-	1    0    0    -1  
 $EndComp
 $Comp
 L squelch_board-rescue:GND #PWR029
@@ -1036,8 +988,6 @@ Connection ~ 5550 4200
 Wire Wire Line
 	6550 4300 6450 4300
 Wire Wire Line
-	6550 3625 6550 3775
-Wire Wire Line
 	6550 3775 6075 3775
 Wire Wire Line
 	6550 4725 5750 4725
@@ -1130,15 +1080,12 @@ Wire Wire Line
 Connection ~ 8800 2850
 Connection ~ 7600 2850
 Wire Wire Line
-	7350 3150 7475 3150
-Wire Wire Line
 	8950 4450 8850 4450
 Wire Wire Line
 	8850 4450 8850 4550
 Wire Wire Line
 	8850 4550 8950 4550
 Connection ~ 8850 4550
-Connection ~ 7475 3150
 Wire Wire Line
 	10350 2850 10850 2850
 Wire Wire Line
@@ -1147,20 +1094,6 @@ Wire Wire Line
 	10675 2650 10675 3300
 Wire Wire Line
 	10675 3300 10350 3300
-$Comp
-L squelch_board-rescue:CONN_01X03 P3
-U 1 1 589E7E28
-P 7700 3625
-F 0 "P3" H 7618 3300 50  0000 C CNN
-F 1 "OUT" H 7618 3391 50  0000 C CNN
-F 2 "w_conn_mpt:mpt_0,5%2f3-2,54" H 400 725 50  0001 C CNN
-F 3 "" H 400 725 50  0001 C CNN
-F 4 "DIST DIGIKEY ED10562-ND" H 7700 3625 60  0001 C CNN "BOM"
-	1    7700 3625
-	1    0    0    1   
-$EndComp
-Text Label 7500 3525 2    60   ~ 0
-NOISE
 Connection ~ 8350 3750
 Wire Wire Line
 	8350 3650 8175 3650
@@ -1230,7 +1163,6 @@ Text Label 1550 6825 2    60   ~ 0
 TOS
 Text Label 2050 6825 0    60   ~ 0
 PTT
-Connection ~ 6550 3775
 $Comp
 L squelch_board-rescue:CP2105 U6
 U 1 1 589D7023
@@ -1523,26 +1455,8 @@ Text Label 10350 1325 0    60   ~ 0
 uC10
 Wire Wire Line
 	8575 1125 9050 1125
-$Comp
-L squelch_board-rescue:C C23
-U 1 1 58A0A787
-P 7025 3625
-F 0 "C23" V 7225 3575 50  0000 L CNN
-F 1 "1u" V 7150 3575 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603" H 7063 3475 50  0001 C CNN
-F 3 "" H 7025 3625 50  0000 C CNN
-F 4 "CAP MLCC 1uF 10% 25V ≥X5R [0603]" H 7025 3625 60  0001 C CNN "BOM"
-	1    7025 3625
-	0    1    -1   0   
-$EndComp
-Wire Wire Line
-	7175 3625 7325 3625
-Wire Wire Line
-	6875 3625 6850 3625
-Text Label 6875 3625 1    60   ~ 0
-AF_MUTE
 Text Label 10350 1125 0    60   ~ 0
-AF_MUTE
+MUTE
 $Comp
 L squelch_board-rescue:C C24
 U 1 1 58A0E8F4
@@ -1806,22 +1720,6 @@ F 3 "" H 900 1900 50  0000 C CNN
 	1    900  1900
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	7100 3825 7325 3825
-Wire Wire Line
-	7325 3825 7325 3625
-Connection ~ 7325 3625
-$Comp
-L squelch_board-rescue:GND #PWR047
-U 1 1 58A0FED8
-P 6950 4025
-F 0 "#PWR047" H 7000 4075 50  0001 C CNN
-F 1 "GND" H 6955 3852 50  0001 C CNN
-F 2 "" H -50 50  50  0001 C CNN
-F 3 "" H -50 50  50  0001 C CNN
-	1    6950 4025
-	-1   0    0    -1  
-$EndComp
 $Comp
 L squelch_board-rescue:CONN_COAXIAL P8
 U 1 1 58A10A3E
@@ -1875,18 +1773,6 @@ Wire Wire Line
 Wire Wire Line
 	950  2725 950  3350
 Connection ~ 950  3350
-$Comp
-L squelch_board-rescue:CONN_COAXIAL P7
-U 1 1 58A10A59
-P 6950 3825
-F 0 "P7" H 7125 3825 50  0000 L CNN
-F 1 "LPF" H 7100 3750 50  0000 L CNN
-F 2 "local:MOLEX-0734152063" H 75  -75 50  0001 C CNN
-F 3 "" H 75  -75 50  0001 C CNN
-F 4 "DIST DIGIKEY WM3914CT-ND" H 6950 3825 60  0001 C CNN "BOM"
-	1    6950 3825
-	-1   0    0    -1  
-$EndComp
 NoConn ~ 10350 1525
 NoConn ~ 10350 1625
 NoConn ~ 10350 1925
@@ -1949,8 +1835,6 @@ Wire Wire Line
 Wire Wire Line
 	8850 4550 8850 4600
 Wire Wire Line
-	7475 3150 7600 3150
-Wire Wire Line
 	8350 3750 8350 4200
 Wire Wire Line
 	6550 3775 6550 4300
@@ -1970,8 +1854,6 @@ Wire Wire Line
 	3775 1800 4175 1800
 Wire Wire Line
 	1800 3350 2025 3350
-Wire Wire Line
-	7325 3625 7500 3625
 Wire Wire Line
 	950  3350 1025 3350
 Wire Wire Line
@@ -2069,4 +1951,121 @@ F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/da
 $EndComp
 Text Notes 8175 2050 0    60   ~ 0
 STM32F030F4P6\nmay also work
+$Comp
+L squelch_board-rescue:GND #PWR013
+U 1 1 577F848C
+P 7875 4400
+F 0 "#PWR013" H 7875 4150 50  0001 C CNN
+F 1 "GND" H 7880 4227 50  0001 C CNN
+F 2 "" H 7875 4400 50  0000 C CNN
+F 3 "" H 7875 4400 50  0000 C CNN
+	1    7875 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L squelch_board-rescue:R R2
+U 1 1 5851673E
+P 6875 4300
+F 0 "R2" V 6675 4225 50  0000 L CNN
+F 1 "0" V 6775 4225 50  0000 L CNN
+F 2 "Resistors_SMD:R_0603" V 6805 4300 50  0001 C CNN
+F 3 "" H 6875 4300 50  0000 C CNN
+F 4 "RES SMD 0 [0603]" V 6875 4300 60  0001 C CNN "BOM"
+	1    6875 4300
+	0    1    1    0   
+$EndComp
+$Comp
+L squelch_board-rescue:GND #PWR028
+U 1 1 589DCF95
+P 7475 3150
+F 0 "#PWR028" H 7525 3200 50  0001 C CNN
+F 1 "GND" H 7480 2977 50  0001 C CNN
+F 2 "" H -1200 -825 50  0001 C CNN
+F 3 "" H -1200 -825 50  0001 C CNN
+	1    7475 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L squelch_board-rescue:CONN_01X03 P3
+U 1 1 589E7E28
+P 8075 4300
+F 0 "P3" H 7993 3975 50  0000 C CNN
+F 1 "OUT" H 7993 4066 50  0000 C CNN
+F 2 "w_conn_mpt:mpt_0,5%2f3-2,54" H 775 1400 50  0001 C CNN
+F 3 "" H 775 1400 50  0001 C CNN
+F 4 "DIST DIGIKEY ED10562-ND" H 8075 4300 60  0001 C CNN "BOM"
+	1    8075 4300
+	1    0    0    1   
+$EndComp
+Text Label 7875 4200 2    60   ~ 0
+NOISE
+$Comp
+L squelch_board-rescue:C C23
+U 1 1 58A0A787
+P 7425 4300
+F 0 "C23" V 7625 4250 50  0000 L CNN
+F 1 "1u" V 7550 4250 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 7463 4150 50  0001 C CNN
+F 3 "" H 7425 4300 50  0000 C CNN
+F 4 "CAP MLCC 1uF 10% 25V ≥X5R [0603]" H 7425 4300 60  0001 C CNN "BOM"
+	1    7425 4300
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	7575 4300 7725 4300
+Wire Wire Line
+	7275 4300 7025 4300
+Text Label 7275 4300 2    60   ~ 0
+MUTE
+Wire Wire Line
+	7575 4500 7725 4500
+Wire Wire Line
+	7725 4500 7725 4300
+Connection ~ 7725 4300
+$Comp
+L squelch_board-rescue:GND #PWR047
+U 1 1 58A0FED8
+P 7425 4700
+F 0 "#PWR047" H 7475 4750 50  0001 C CNN
+F 1 "GND" H 7430 4527 50  0001 C CNN
+F 2 "" H 425 725 50  0001 C CNN
+F 3 "" H 425 725 50  0001 C CNN
+	1    7425 4700
+	-1   0    0    -1  
+$EndComp
+$Comp
+L squelch_board-rescue:CONN_COAXIAL P7
+U 1 1 58A10A59
+P 7425 4500
+F 0 "P7" H 7600 4500 50  0000 L CNN
+F 1 "LPF" H 7575 4425 50  0000 L CNN
+F 2 "local:MOLEX-0734152063" H 550 600 50  0001 C CNN
+F 3 "" H 550 600 50  0001 C CNN
+F 4 "DIST DIGIKEY WM3914CT-ND" H 7425 4500 60  0001 C CNN "BOM"
+	1    7425 4500
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	7725 4300 7875 4300
+Wire Wire Line
+	7350 3150 7475 3150
+Connection ~ 7475 3150
+Wire Wire Line
+	7475 3150 7600 3150
+Text Label 6550 4300 0    60   ~ 0
+LPF
+Wire Wire Line
+	6725 4300 6550 4300
+$Comp
+L squelch_board-rescue:APE8865U5-33-HF-3 U3
+U 1 1 577FD992
+P 5075 1850
+F 0 "U3" H 5075 2167 50  0000 C CNN
+F 1 "AP2202" H 5075 2076 50  0000 C CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23-5" H 5075 2076 50  0001 C CIN
+F 3 "" H 5075 1850 50  0000 C CNN
+F 4 "DIST DIGIKEY AP2202K-3.3TRG1" H 5075 1850 60  0001 C CNN "BOM"
+	1    5075 1850
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
