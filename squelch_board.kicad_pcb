@@ -4090,9 +4090,9 @@
     (pad 1 smd rect (at 0 0 180) (size 4.7 3.43) (layers F.Cu F.Paste F.Mask)
       (net 67 /AF))
     (model ${KIPRJMOD}/local.3dshapes/keystone-PN5018.step
-      (at (xyz 0 0 0))
+      (offset (xyz -1.5 -1 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz -90 0 90))
     )
   )
 
@@ -4108,8 +4108,8 @@
     )
     (pad 1 smd rect (at 0 0) (size 4.7 3.43) (layers F.Cu F.Paste F.Mask)
       (net 64 /NOISE))
-    (model ${KISYS3DMOD}/keystone-PN5018.STEP
-      (offset (xyz -1.799999972966712 -0.9999999849815068 0))
+    (model ${KIPRJMOD}/local.3dshapes/keystone-PN5018.step
+      (offset (xyz -1.5 -1 0))
       (scale (xyz 1 1 1))
       (rotate (xyz -90 0 90))
     )
