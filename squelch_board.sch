@@ -547,7 +547,7 @@ Text Notes 4100 6425 0    60   ~ 0
 Text Notes 6125 2425 0    60   ~ 0
 Todo:\n- Taper off\n- output divider\n- R2\n- 576-3193-1-ND LDO with smaller footprint
 Text Notes 550  1050 0    300  ~ 60
-HB9UF Squelch Board Rev 1.3
+HB9UF Squelch Board Rev 2.0
 $Comp
 L squelch_board-rescue:C C17
 U 1 1 5846128F

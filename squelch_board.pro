@@ -1,4 +1,4 @@
-update=Sun 07 Jun 2020 03:58:33 PM CEST
+update=Mon 08 Jun 2020 04:47:52 PM CEST
 version=1
 last_client=kicad
 [pcbnew]
@@ -25,16 +25,16 @@ version=1
 NetIExt=net
 [general]
 version=1
+[eeschema]
+version=1
+LibDir=
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
-PlotDirectoryName=/tmp/squelch.svg
+PlotDirectoryName=/tmp/squelch.pdf
 SubpartIdSeparator=0
 SubpartFirstId=65
 NetFmtName=
 SpiceAjustPassiveValues=0
 LabSize=60
 ERC_TestSimilarLabels=1
-[eeschema]
-version=1
-LibDir=
