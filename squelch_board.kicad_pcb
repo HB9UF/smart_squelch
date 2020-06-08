@@ -826,7 +826,7 @@
     (tags "USB USB_B USB_Mini connector")
     (path /589D7B9D)
     (attr smd)
-    (fp_text reference P5 (at 0 5 90) (layer B.SilkS)
+    (fp_text reference P5 (at 0 5 90) (layer B.SilkS) hide
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
     (fp_text value CONN-10033526-N3212LF (at 0 -7.5 90) (layer B.Fab)
