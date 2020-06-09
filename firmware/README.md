@@ -19,7 +19,6 @@ The STM32 microcontroller can be flashed from USB using the 'stm32flash-code' to
 echo 0 > /sys/class/gpio/gpio355/value
 sleep 0.1
 echo 1 > /sys/class/gpio/gpio355/value
-sleep 1
 ```
 3. Flash the firmware: `stm32flash -w build/ch.hex /dev/ttyUSB0`
 4. Pull the BOOT0 pin low. The pin is connected to the RTS. Helper program rts.py keeps the pin low for 10 seconds. Thus, running `python rts.py &` fulfils this step. The subsequent reset in the next step must take place within 10 secods.
@@ -30,4 +29,10 @@ sleep 0.1
 echo 1 > /sys/class/gpio/gpio355/value
 ```
 
-A helper program `program.sh` automates the above steps.
+Alternatively, `stm32flash` can be alled with the appropriate entry and exit sequences:
+
+```
+stm32flash-code/stm32flash -w ../firmware/build/ch.hex /dev/ttyUSB0 -i '-rts,-355,355,,,:rts,-355,355'
+```
+
+Note that this still requires activation of Cthe P2105 GPIO capabilities and the GPIO number (355) is subject to change.
