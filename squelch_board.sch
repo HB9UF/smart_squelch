@@ -526,14 +526,12 @@ F 3 "" H 5375 6125 50  0000 C CNN
 	1    5375 6125
 	1    0    0    -1  
 $EndComp
-Text Notes 2225 3375 0    60   ~ 0
+Text Notes 2675 3400 0    60   ~ 0
 x 2 buffer amp
 Text Notes 4400 3400 0    60   ~ 0
 3rd order Sallen-Key LPF, cutoff 5.76 kHz
 Text Notes 4100 6425 0    60   ~ 0
 3rd order Butterworth Sallen-Key HPF, cutoff 7.5 kHz
-Text Notes 6125 2425 0    60   ~ 0
-Todo:\n- Taper off\n- output divider\n- R2\n- 576-3193-1-ND LDO with smaller footprint
 Text Notes 550  1050 0    300  ~ 60
 HB9UF Squelch Board Rev 2.0
 $Comp
@@ -1093,8 +1091,6 @@ Text Label 9050 925  2    60   ~ 0
 ~RST
 Text Label 9050 1125 2    60   ~ 0
 BOOT0
-Text Label 10350 4150 0    60   ~ 0
-BOOT0
 Text Label 10525 3300 2    60   ~ 0
 ~RST
 Wire Wire Line
@@ -1638,7 +1634,7 @@ L squelch_board-rescue:C C25
 U 1 1 58A2908D
 P 2025 3500
 F 0 "C25" H 1850 3450 50  0000 C CNN
-F 1 "470p" H 1800 3550 50  0000 C CNN
+F 1 "NP" H 1800 3550 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 2063 3350 50  0001 C CNN
 F 3 "" H 2025 3500 50  0000 C CNN
 F 4 "CAP MLCC 470pF 5% NP0 [0603]" V 2025 3500 60  0001 C CNN "BOM"
@@ -1746,7 +1742,6 @@ NoConn ~ 9050 2025
 NoConn ~ 10350 3500
 NoConn ~ 10350 3600
 NoConn ~ 10350 4050
-NoConn ~ 10350 4250
 NoConn ~ 10350 4350
 NoConn ~ 10350 4450
 Wire Wire Line
@@ -2068,4 +2063,19 @@ Wire Wire Line
 	8375 3550 8525 3550
 Wire Wire Line
 	8725 3450 8950 3450
+NoConn ~ 10350 4250
+Text Label 10350 4150 0    60   ~ 0
+BOOT0
+Wire Notes Line
+	1025 3150 2350 3150
+Wire Notes Line
+	2350 3150 2350 3650
+Wire Notes Line
+	2350 3650 1025 3650
+Wire Notes Line
+	1025 3650 1025 3150
+Text Notes 1700 3275 0    60   ~ 0
+Optional LPF
+Text Notes 6125 2425 0    60   ~ 0
+Todo:\n- output divider\n- 576-3193-1-ND LDO with smaller footprint
 $EndSCHEMATC
