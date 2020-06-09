@@ -533,7 +533,7 @@ Text Notes 4400 3400 0    60   ~ 0
 Text Notes 4100 6425 0    60   ~ 0
 3rd order Butterworth Sallen-Key HPF, cutoff 7.5 kHz
 Text Notes 550  1050 0    300  ~ 60
-HB9UF Squelch Board Rev 2.0
+HB9UF Smart Squelch Rev 2.0
 $Comp
 L squelch_board-rescue:C C17
 U 1 1 5846128F
