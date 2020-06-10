@@ -35,4 +35,4 @@ Alternatively, `stm32flash` can be alled with the appropriate entry and exit seq
 stm32flash-code/stm32flash -w ../firmware/build/ch.hex /dev/ttyUSB0 -i '-rts,-355,355,,,:rts,-355,355'
 ```
 
-Note that this still requires activation of Cthe P2105 GPIO capabilities and the GPIO number (355) is subject to change.
+Note that this still requires activation of the P2105 GPIO capabilities and the GPIO number (355) is subject to change.
