@@ -4306,6 +4306,10 @@
       (xy 0.42418 -1.016)) (layer B.SilkS) (width 0.00254))
   )
 
+  (gr_text 6V5 (at 119.75 68.75 90) (layer B.SilkS) (tstamp 5EE10C99)
+    (effects (font (size 1.5 1.5) (thickness 0.3)) (justify right mirror))
+  )
+  (gr_line (start 126.5 64.25) (end 118.25 64.25) (layer B.SilkS) (width 0.2))
   (gr_line (start 137 83.75) (end 137 86.25) (layer B.SilkS) (width 0.2) (tstamp 5EDFC8D3))
   (gr_circle (center 137 85.5) (end 136.8 85.5) (layer B.SilkS) (width 0.2) (tstamp 5EDFC5F5))
   (gr_line (start 145 68.75) (end 145 69.25) (layer B.SilkS) (width 0.2) (tstamp 5EDFC102))
@@ -4321,7 +4325,7 @@
   (gr_text "(c) 2017, 2020, CC-BY-SA" (at 163.5 88.7 90) (layer F.SilkS)
     (effects (font (size 0.75 0.75) (thickness 0.15)))
   )
-  (gr_text "9 - 32\nVDC" (at 115.75 65.75) (layer B.SilkS)
+  (gr_text Vin (at 127.75 68.25 90) (layer B.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.3)) (justify right mirror))
   )
   (gr_line (start 143.75 99.5) (end 143.75 99.5) (layer B.SilkS) (width 0.2) (tstamp 58A0B0AF))
@@ -4352,12 +4356,10 @@
   (gr_line (start 146.75 73.55) (end 143.25 73.55) (layer B.SilkS) (width 0.2) (tstamp 58A0B0A6))
   (gr_line (start 143.25 73.55) (end 143.25 70.05) (layer B.SilkS) (width 0.2) (tstamp 58A0B0A5))
   (gr_line (start 143.25 70.05) (end 143.25 70.05) (layer B.SilkS) (width 0.2) (tstamp 58A0B0A4))
-  (gr_line (start 123.25 68.25) (end 123.25 67) (layer B.SilkS) (width 0.2) (tstamp 589E7FA6))
-  (gr_line (start 125.5 64.75) (end 123.25 67) (layer B.SilkS) (width 0.2))
+  (gr_line (start 118.25 68.5) (end 118.25 64.25) (layer B.SilkS) (width 0.2) (tstamp 589E7FA6))
   (gr_line (start 127.5 73) (end 129 73) (layer B.SilkS) (width 0.2) (tstamp 589E7F96))
   (gr_line (start 129 64.75) (end 129 73) (layer B.SilkS) (width 0.2))
-  (gr_line (start 126.5 63.75) (end 125.5 64.75) (layer B.SilkS) (width 0.2))
-  (gr_line (start 126.5 62.5) (end 126.5 63.75) (layer B.SilkS) (width 0.2))
+  (gr_line (start 126.5 62.5) (end 126.5 64.25) (layer B.SilkS) (width 0.2))
   (gr_line (start 129 63.75) (end 129 64.75) (layer B.SilkS) (width 0.2))
   (gr_line (start 129 62.25) (end 129 63.75) (layer B.SilkS) (width 0.2) (tstamp 58AE5CFD))
   (gr_line (start 126.5 62) (end 126.5 62.75) (layer B.SilkS) (width 0.2))
@@ -6690,12 +6692,12 @@
     (fill yes (arc_segments 16) (thermal_gap 0.508) (thermal_bridge_width 0.508))
     (polygon
       (pts
-        (xy 123.25 69.136648) (xy 122.75 67.636648) (xy 123.75 67.636648)
+        (xy 126.5 61.5) (xy 127 63) (xy 126 63)
       )
     )
     (filled_polygon
       (pts
-        (xy 123.25 68.735038) (xy 122.926203 67.763648) (xy 123.573797 67.763648)
+        (xy 126.5 61.90161) (xy 126.823797 62.873) (xy 126.176203 62.873)
       )
     )
   )
@@ -6705,12 +6707,12 @@
     (fill yes (arc_segments 16) (thermal_gap 0.508) (thermal_bridge_width 0.508))
     (polygon
       (pts
-        (xy 129 61.75) (xy 129.5 63.25) (xy 128.5 63.25)
+        (xy 127 73) (xy 128.5 72.5) (xy 128.5 73.5)
       )
     )
     (filled_polygon
       (pts
-        (xy 129.323797 63.123) (xy 128.676203 63.123) (xy 129 62.15161)
+        (xy 128.373 72.676203) (xy 128.373 73.323797) (xy 127.40161 73)
       )
     )
   )
