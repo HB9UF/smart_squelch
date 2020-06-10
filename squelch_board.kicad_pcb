@@ -2486,7 +2486,7 @@
     (tags resistor)
     (path /58A2017B)
     (attr smd)
-    (fp_text reference R32 (at 0 -1.75 90) (layer F.SilkS)
+    (fp_text reference R32 (at 2.75 0 180) (layer F.SilkS)
       (effects (font (size 0.7 0.7) (thickness 0.127)))
     )
     (fp_text value R (at 0 1.43) (layer F.Fab)
